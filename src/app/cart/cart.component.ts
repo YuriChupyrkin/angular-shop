@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import Product from '../common/product.model';
 
@@ -8,12 +8,11 @@ import Product from '../common/product.model';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  items: Array<Product>;
+  @Input() items: Array<Product> = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.items = [];
   }
 
   onBuy(product: Product): void {

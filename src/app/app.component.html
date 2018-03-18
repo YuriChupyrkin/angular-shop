@@ -5,11 +5,11 @@
   <div class="games-shop">
     <div class="cart">
       <div class="cart-content">
-        <app-cart></app-cart>
+        <app-cart [items]="cartItem"></app-cart>
       </div>
     </div>
     <div class="products">
-      <app-products></app-products>
+      <app-products (buyItem)="onAddToCart($event)"></app-products>
     </div>
   </div>
 </div>
