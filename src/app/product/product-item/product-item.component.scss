@@ -1,0 +1,57 @@
+@mixin item-label ($color, $width) {
+  border: 1px solid #b9b9b9;
+  background: $color;
+  border-radius: 5px;
+  padding: 2px;
+  width: $width;
+}
+
+.title {
+  line-height: 30px;
+}
+
+.name {
+  font-size: 28px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.category {
+  font-style: italic;
+  font-size: 24px;
+  @include item-label(#a0e4b8, auto);
+}
+
+.description {
+  font-size: 18px;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.buy-item {
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-content: center;
+  line-height: 28px;
+  user-select: none;
+
+  .not-availible {
+    text-decoration: line-through;
+    cursor: no-drop;
+    @include item-label(#ee8c8c, 100px);
+  }
+  
+  .availible {
+    cursor: pointer;
+    @include item-label(orange, 100px);
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 10px;
+    line-height: 14px;
+    margin-left: 6px;
+  }
+}

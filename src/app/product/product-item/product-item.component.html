@@ -1,1 +1,20 @@
-<h1>{{item.name}}</h1>
+<div class="item">
+  <div class="title">
+    <span class="name">
+      {{item.name}}
+    </span>
+    <span class="category">
+      {{item.category}}
+    </span>
+  </div>
+  <div class="description">{{item.description}}</div>
+  <div class="buy-item">
+    <div *ngIf="item.isAvailible; else notAvailible" class="availible">
+      Buy
+    </div>
+    <ng-template #notAvailible>
+      <div class="not-availible">Not availible</div>
+    </ng-template>
+    <div class="price">{{itemPrice}}</div>
+  </div>
+</div>

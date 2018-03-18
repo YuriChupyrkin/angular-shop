@@ -15,4 +15,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  get itemPrice() {
+    return `${this.item.price}$`;
+  }
 }
