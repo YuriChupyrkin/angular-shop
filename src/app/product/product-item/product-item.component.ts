@@ -18,4 +18,8 @@ export class ProductItemComponent implements OnInit {
   get itemPrice() {
     return `${this.item.price}$`;
   }
+
+  onBuy(): void {
+    console.log(`buy item: ${this.item.name}`);
+  }
 }

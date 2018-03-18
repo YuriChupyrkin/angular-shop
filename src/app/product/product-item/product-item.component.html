@@ -9,7 +9,7 @@
   </div>
   <div class="description">{{item.description}}</div>
   <div class="buy-item">
-    <div *ngIf="item.isAvailible; else notAvailible" class="availible">
+    <div *ngIf="item.isAvailible; else notAvailible" (click)="onBuy()" class="availible">
       Buy
     </div>
     <ng-template #notAvailible>
