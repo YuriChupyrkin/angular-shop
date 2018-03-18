@@ -16,12 +16,12 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  get itemPrice() {
-    return `${this.item.price}$`;
-  }
-
   onBuy(): void {
     console.log(`product item: onBuy: ${this.item.name}`);
     this.buyItem.emit(this.item);
+  }
+
+  get itemPrice() {
+    return `${this.item.price}$`;
   }
 }

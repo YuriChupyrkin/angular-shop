@@ -9,17 +9,17 @@ import { CartService } from './cart/cart.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  cartItem: Array<Product> = [];
+  cartItems: Array<Product> = [];
 
   constructor(private cartService: CartService) {}
 
   onAddToCart(product: Product): void {
     console.log(`onAddToCart: ${product.name}`);
-    this.cartItem.push(product);
+    this.cartItems.push(product);
   }
 
   onBuyProducts(products: Array<Product>): void {
     this.cartService.buyItems(products);
-    this.cartItem = new Array<Product>();
+    this.cartItems = new Array<Product>();
   }
 }
