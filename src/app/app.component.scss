@@ -1,0 +1,24 @@
+.games-shop {
+  display: flex;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 48px;
+  text-align: center;
+}
+
+.cart {
+  flex: 2 2;
+  max-width: 350px;
+  min-width: 150px;
+  position: relative;
+
+  .cart-content {
+    position: fixed;
+  }
+}
+
+.products {
+  flex: 6 6;
+}
