@@ -5,7 +5,7 @@
   <div class="games-shop">
     <div class="cart">
       <div class="cart-content">
-        <app-cart [items]="cartItem"></app-cart>
+        <app-cart [items]="cartItem" (buyItems)="onBuyProducts($event)"></app-cart>
       </div>
     </div>
     <div class="products">

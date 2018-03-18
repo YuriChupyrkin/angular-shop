@@ -1,7 +1,15 @@
 <div class="cart-body">
   <div *ngIf="items.length; else emptyCart">
-    items....
-  
+    <div *ngFor="let cartItem of cartItems">
+      <div class="cart-item">{{cartItem}}</div>
+    </div>
+
+    <div class="total-price">
+      Total price: {{totalPrice}}$
+    </div>
+    <div>
+      <button class="pay-button" (click)="onBuy()">Pay...</button>
+    </div>
   </div>
   <ng-template #emptyCart>
     <div class="epmty-cart">
