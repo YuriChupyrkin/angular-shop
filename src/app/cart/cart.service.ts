@@ -6,12 +6,10 @@ import CartItem from './cart-item.model';
 
 @Injectable()
 export class CartService {
-  private cartItemsChanel: Subject<any> =
-    new Subject<any>();
-  public cartItemsChanel$ =
-    this.cartItemsChanel.asObservable();
-
   private cartItems: any = {};
+  private cartItemsChanel: Subject<any> = new Subject<any>();
+
+  public cartItemsChanel$ = this.cartItemsChanel.asObservable();
 
   getTotalPrice(): number {
     const totalPrice = Object

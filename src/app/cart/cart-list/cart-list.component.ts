@@ -1,14 +1,11 @@
 import {
   Component,
   OnInit,
-  Input,
-  Output,
-  EventEmitter,
   OnDestroy,
 } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
 import CartItem from '../cart-item.model';
+import { Subscription } from 'rxjs/Subscription';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -27,7 +24,8 @@ export class CartListComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.cartItems = Object.keys(data)
           .map((key) => data[key]);
-      });
+        }
+      );
   }
 
   ngOnDestroy() {

@@ -17,10 +17,8 @@ import CartItem from '../cart-item.model';
 })
 export class CartItemComponent {
   @Input() cartItem: CartItem;
-  @Output() removeItem: EventEmitter<CartItem> =
-    new EventEmitter<CartItem>();
-  @Output() addItem: EventEmitter<CartItem> =
-    new EventEmitter<CartItem>();
+  @Output() removeItem: EventEmitter<CartItem> = new EventEmitter<CartItem>();
+  @Output() addItem: EventEmitter<CartItem> = new EventEmitter<CartItem>();
 
   constructor() { }
 
