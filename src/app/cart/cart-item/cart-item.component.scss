@@ -1,3 +1,19 @@
+:host.active-item {
+  .cart-item {
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: 2px;
+
+    .item-remove {
+      display: inline;
+    }
+
+    .item-price {
+      font-weight: bold;
+    }
+  }
+}
+
 .cart-item {
   font-size: 20px;
   font-style: italic;
@@ -9,4 +25,5 @@
 
 .item-remove {
   color: red;
+  display: none;
 }
