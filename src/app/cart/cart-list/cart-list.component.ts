@@ -2,15 +2,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import * as _ from 'lodash';
 
-import Product from '../common/product.model';
-import { CartService } from './cart.service';
+import Product from '../../common/product.model';
+import { CartService } from '../cart.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  selector: 'app-cart-list',
+  templateUrl: './cart-list.component.html',
+  styleUrls: ['./cart-list.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartListComponent implements OnInit {
   @Input() items: Array<Product> = [];
   @Output() buyItems: EventEmitter<Array<Product>> =
     new EventEmitter<Array<Product>>();
