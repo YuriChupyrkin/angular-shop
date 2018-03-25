@@ -22,11 +22,11 @@ export class CartComponent implements OnInit {
     this.buyItems.emit(this.items);
   }
 
-  get totalPrice(): number {
-    return this.cartService.getTotalPrice(this.items);
+  onRemoveItem(product: Product): void {
+    console.log('remove: ', product.name);
   }
 
-  get cartItems(): Array<string> {
-    return this.cartService.prepareToDrawItems(this.items);
+  get totalPrice(): number {
+    return this.cartService.getTotalPrice(this.items);
   }
 }

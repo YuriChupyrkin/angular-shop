@@ -1,7 +1,8 @@
 <div class="cart-body">
   <div *ngIf="items.length; else emptyCart">
-    <div *ngFor="let cartItem of cartItems">
-      <div class="cart-item">{{cartItem}}</div>
+    <div *ngFor="let item of items">
+      <app-cart-item [item]="item" (removeItem)="onRemoveItem($event)">
+      </app-cart-item>
     </div>
 
     <div class="total-price">
