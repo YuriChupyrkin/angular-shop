@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import * as _ from 'lodash';
+
 import Product from '../common/product.model';
 import { CartService } from './cart.service';
 
@@ -24,6 +26,8 @@ export class CartComponent implements OnInit {
 
   onRemoveItem(product: Product): void {
     console.log('remove: ', product.name);
+    const index = _.findIndex(this.items, {name: product.name});
+    this.items.splice(index, 1);
   }
 
   get totalPrice(): number {
