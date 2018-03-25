@@ -1,15 +1,23 @@
 <div class="cart-body">
-  <div *ngIf="items.length; else emptyCart">
-    <div *ngFor="let item of items">
-      <app-cart-item [item]="item" (removeItem)="onRemoveItem($event)">
+  <div *ngIf="cartItems.length; else emptyCart">
+    <div *ngFor="let item of cartItems">
+      <app-cart-item
+        [cartItem]="item"
+        (removeItem)="onRemoveItem($event)"
+        (addItem)="onAddItem($event)">
       </app-cart-item>
     </div>
 
     <div class="total-price">
       Total price: {{totalPrice}}$
     </div>
-    <div>
-      <button class="pay-button" (click)="onBuy()">Pay...</button>
+    <div class="cart-buttons">
+      <div>
+        <button class="button pay-button" (click)="onBuy()">Pay</button>
+      </div>
+      <div>
+        <button class="button clear-button" (click)="onClear()">Clear</button>
+      </div>
     </div>
   </div>
   <ng-template #emptyCart>

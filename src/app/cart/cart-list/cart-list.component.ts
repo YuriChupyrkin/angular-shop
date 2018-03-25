@@ -1,8 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 
-import * as _ from 'lodash';
-
-import Product from '../../common/product.model';
+import { Subscription } from 'rxjs/Subscription';
+import CartItem from '../cart-item.model';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -10,27 +16,41 @@ import { CartService } from '../cart.service';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss']
 })
-export class CartListComponent implements OnInit {
-  @Input() items: Array<Product> = [];
-  @Output() buyItems: EventEmitter<Array<Product>> =
-    new EventEmitter<Array<Product>>();
+export class CartListComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+  cartItems: Array<CartItem> = new Array<CartItem>();
 
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    this.subscription = this.cartService.cartItemsChanel$
+      .subscribe((data) => {
+        this.cartItems = Object.keys(data)
+          .map((key) => data[key]);
+      });
   }
 
-  onBuy(product: Product): void {
-    this.buyItems.emit(this.items);
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
-  onRemoveItem(product: Product): void {
-    console.log('remove: ', product.name);
-    const index = _.findIndex(this.items, {name: product.name});
-    this.items.splice(index, 1);
+  onBuy(): void {
+    this.cartService.buyItems();
+  }
+
+  onRemoveItem(cartItem: CartItem): void {
+    this.cartService.removeItem(cartItem);
+  }
+
+  onAddItem(cartItem: CartItem): void {
+    this.cartService.addItem(cartItem);
+  }
+
+  onClear() {
+    this.cartService.clearItems();
   }
 
   get totalPrice(): number {
-    return this.cartService.getTotalPrice(this.items);
+    return this.cartService.getTotalPrice();
   }
 }

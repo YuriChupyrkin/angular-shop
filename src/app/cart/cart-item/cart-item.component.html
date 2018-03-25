@@ -1,11 +1,19 @@
 <div class="cart-item">
   <span class="item-name">
-    {{item.name}}:
+    {{cartItem.name}}:
   </span>
   <span class="item-price">
-    {{item.price}}$
+    {{cartItem.price}}$
   </span>
-  <span>
-    <a class="item-remove" href="#" (click)="onRemove($event)">remove</a>
+  <span class="add-remove-buttons">
+    <button class="add-remove-button add-button"
+      (click)="onAdd()">
+        +
+    </button>
+    <span class="item-count">{{cartItem.count}}</span>
+    <button class="add-remove-button remove-button"
+      (click)="onRemove()">
+        -
+    </button>
   </span>
 </div>

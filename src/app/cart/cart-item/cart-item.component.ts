@@ -8,7 +8,7 @@ import {
 
 import * as $ from 'jquery';
 
-import Product from '../../common/product.model';
+import CartItem from '../cart-item.model';
 
 @Component({
   selector: 'app-cart-item',
@@ -16,9 +16,11 @@ import Product from '../../common/product.model';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent {
-  @Input() item: Product;
-  @Output() removeItem: EventEmitter<Product> =
-    new EventEmitter<Product>();
+  @Input() cartItem: CartItem;
+  @Output() removeItem: EventEmitter<CartItem> =
+    new EventEmitter<CartItem>();
+  @Output() addItem: EventEmitter<CartItem> =
+    new EventEmitter<CartItem>();
 
   constructor() { }
 
@@ -32,8 +34,11 @@ export class CartItemComponent {
     $(event.target).removeClass('active-item');
   }
 
-  onRemove(event: Event): void {
-    event.preventDefault();
-    this.removeItem.emit(this.item);
+  onRemove(): void {
+    this.removeItem.emit(this.cartItem);
+  }
+
+  onAdd(): void {
+    this.addItem.emit(this.cartItem);
   }
 }
