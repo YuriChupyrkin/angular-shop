@@ -37,7 +37,6 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   onBuy(product: Product): void {
-    console.log(`product list: onBuy: ${product.name}`);
     this.buyItem.emit(product);
   }
 }

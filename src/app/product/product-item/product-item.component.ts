@@ -17,7 +17,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   onBuy(): void {
-    console.log(`product item: onBuy: ${this.item.name}`);
     this.buyItem.emit(this.item);
   }
 
