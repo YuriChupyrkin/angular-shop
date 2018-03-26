@@ -14,7 +14,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     CartModule,
-    ProductsModule
+    ProductsModule,
+    CoreModule,
   ],
   providers: [
   ],

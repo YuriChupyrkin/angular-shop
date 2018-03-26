@@ -15,11 +15,18 @@ import { CartService } from '../cart.service';
 })
 export class CartListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  cartItems: Array<CartItem> = new Array<CartItem>();
+  cartItems: any = new Array<CartItem>();
 
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    const storedItems = this.cartService.getCartItems();
+
+    if (storedItems) {
+      this.cartItems = Object.keys(storedItems)
+        .map((key) => storedItems[key]);
+    }
+
     this.subscription = this.cartService.cartItemsChanel$
       .subscribe((data) => {
         this.cartItems = Object.keys(data)

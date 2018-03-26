@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
+import { LocalStorageService } from '../core/local-storage.service';
 import Product, { Category } from '../common/product.model';
 import CartItem from './cart-item.model';
 
@@ -10,6 +11,10 @@ export class CartService {
   private cartItemsChanel: Subject<any> = new Subject<any>();
 
   public cartItemsChanel$ = this.cartItemsChanel.asObservable();
+
+  constructor(private localStorage: LocalStorageService) {
+    this.cartItems = this.localStorage.getItem('cart-items') || {};
+  }
 
   getTotalPrice(): number {
     const totalPrice = Object
@@ -33,13 +38,18 @@ export class CartService {
     return totalCount;
   }
 
+  getCartItems(): any {
+    return this.localStorage.getItem('cart-items');
+  }
+
   addToCart(product: Product) {
     if (this.cartItems[product.name]) {
       this.cartItems[product.name].count++;
     } else {
       this.cartItems[product.name] = new CartItem(product);
-      this.cartItemsChanel.next(this.cartItems);
     }
+
+    this.update();
   }
 
   addItem(cartItem: CartItem): void {
@@ -48,6 +58,7 @@ export class CartService {
     }
 
     this.cartItems[cartItem.name].count++;
+    this.update();
   }
 
   removeItem(cartItem: CartItem): void {
@@ -59,8 +70,9 @@ export class CartService {
       this.cartItems[cartItem.name].count--;
     } else {
       delete this.cartItems[cartItem.name];
-      this.cartItemsChanel.next(this.cartItems);
     }
+
+    this.update();
   }
 
   buyItems(): void {
@@ -77,6 +89,11 @@ export class CartService {
 
   clearItems(): void {
     this.cartItems = {};
+    this.update();
+  }
+
+  private update() {
     this.cartItemsChanel.next(this.cartItems);
+    this.localStorage.setItem('cart-items', this.cartItems);
   }
 }
