@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 
 import Product from './common/product.model';
 import { CartService } from './cart/cart.service';
 import { ConstantsService } from './core/constants.service';
+import { GeneratorService } from './core/generator.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,20 @@ import { ConstantsService } from './core/constants.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private userToken: string;
+
   constructor(
     private cartService: CartService,
-    @Inject(ConstantsService) private constants: any
-  ) {}
+    @Inject(ConstantsService) private constants: any,
+    @Optional() @Inject(GeneratorService) private generator: any,
+  ) {
+  }
 
   ngOnInit(): void {
+    this.userToken = this.generator || 'default_user_token';
+
     console.log(`${this.constants.App} (${this.constants.Ver}) has inited...`);
+    console.log(`User token: ${this.userToken}`);
   }
 
   onAddToCart(product: Product): void {
