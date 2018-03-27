@@ -15,13 +15,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    @Inject(ConstantsService) private constants: any,
+    @Optional() @Inject(ConstantsService) private constants: any,
     @Optional() @Inject(GeneratorService) private generator: any,
   ) {
   }
 
   ngOnInit(): void {
     this.userToken = this.generator || 'default_user_token';
+    this.constants = this.constants || { App: 'default_app', Ver: '0.0.0.1'};
 
     console.log(`${this.constants.App} (${this.constants.Ver}) has inited...`);
     console.log(`User token: ${this.userToken}`);
