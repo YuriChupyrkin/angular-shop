@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ViewChildren,
   ElementRef,
+  QueryList,
 } from '@angular/core';
 
 import Product from '../common/product.model';
@@ -19,8 +20,8 @@ import { ProductsService } from './products.service';
 export class ProductsComponent implements OnInit, AfterViewInit {
   @Output() buyItem: EventEmitter<Product> =
     new EventEmitter<Product>();
-  @ViewChildren('productsItems') productsItems: Array<ElementRef> =
-    new Array<ElementRef>();
+  @ViewChildren('productsItems') productsItems: QueryList<ElementRef> =
+    new QueryList<ElementRef>();
   products: Array<Product>;
 
   constructor(private productsService: ProductsService) { }
