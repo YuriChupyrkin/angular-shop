@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
   }
 
   onAddToCart(product: Product): void {
-    console.log(`onAddToCart: ${product.name}`);
     this.cartService.addToCart(product);
   }
 }
