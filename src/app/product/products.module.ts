@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductsService } from './products.service';
+import { UserFriendlyDirective } from '../core/directives/read-friendly.directive';
 
 @NgModule({
   declarations: [
     ProductsComponent,
     ProductItemComponent,
+    UserFriendlyDirective,
   ],
   imports: [
     CommonModule
