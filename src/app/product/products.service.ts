@@ -6,7 +6,7 @@ import Product, { Category } from '../common/product.model';
 export class ProductsService {
   constructor() {}
 
-  loadProduct(): Array<Product> {
+  loadProduct(): Promise<Array<Product>> {
     const products = Array<Product>();
     products.push(
       new Product(
@@ -91,6 +91,10 @@ export class ProductsService {
       )
     );
 
-    return products;
+    const promise = new Promise<Array<Product>>((res, rej) => {
+      res(products);
+    });
+
+    return promise;
   }
 }

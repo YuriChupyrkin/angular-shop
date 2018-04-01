@@ -1,5 +1,5 @@
 <div>
-  <div *ngFor="let product of products; let odd = odd">
+  <div *ngFor="let product of productPromise | async; let odd = odd">
     <div class="product-item" [class.odd-item]="odd">
       <app-product-item #productsItems [item]="product" (buyItem)="onBuy($event)">
       </app-product-item>

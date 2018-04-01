@@ -22,12 +22,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     new EventEmitter<Product>();
   @ViewChildren('productsItems') productsItems: QueryList<ElementRef> =
     new QueryList<ElementRef>();
-  products: Array<Product>;
+  productPromise: Promise<Array<Product>>;
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.products = this.productsService.loadProduct();
+    this.productPromise = this.productsService.loadProduct();
   }
 
   ngAfterViewInit() {
