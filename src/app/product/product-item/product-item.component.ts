@@ -21,6 +21,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   get itemPrice() {
-    return `${this.item.price}$`;
+    return `${this.item.price}`;
   }
 }
