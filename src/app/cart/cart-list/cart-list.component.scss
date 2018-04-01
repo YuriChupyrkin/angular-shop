@@ -31,3 +31,22 @@
     background: orange;
   }
 }
+
+.sort-options {
+  margin-bottom: 20px;
+  user-select: none;
+
+  .sort-label {
+    font-style: italic;
+  }
+
+  .sort-option {
+    cursor: pointer;
+    color: #46a7bd;
+    margin: 0 20px;
+  }
+
+  .sort-option-active {
+    color: red;
+  }
+}

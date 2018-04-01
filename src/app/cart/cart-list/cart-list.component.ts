@@ -16,10 +16,15 @@ import { CartService } from '../cart.service';
 export class CartListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   cartItems: any = new Array<CartItem>();
+  sortProperty: string;
+  sortAsc: boolean;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    this.sortProperty = 'name';
+    this.sortAsc = true;
+
     const storedItems = this.cartService.getCartItems();
 
     if (storedItems) {
@@ -53,6 +58,14 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   onClear() {
     this.cartService.clearItems();
+  }
+
+  onChangeSorting(sortProperty: string): void {
+    if (this.sortProperty === sortProperty) {
+      this.sortAsc = !this.sortAsc;
+    } else {
+      this.sortProperty = sortProperty;
+    }
   }
 
   get totalPrice(): number {

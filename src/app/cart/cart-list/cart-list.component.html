@@ -1,6 +1,26 @@
 <div class="cart-body">
+  <div class="sort-options">
+    <span class="sort-label">
+      Sort by:
+    </span>
+    <span class="sort-option"
+      [class.sort-option-active]="sortProperty==='name'"
+      (click)="onChangeSorting('name')">
+        Name
+    </span>
+    <span class="sort-option"
+      [class.sort-option-active]="sortProperty==='price'"
+      (click)="onChangeSorting('price')">
+        Price
+    </span>
+    <span class="sort-option"
+      [class.sort-option-active]="sortProperty==='count'"
+      (click)="onChangeSorting('count')">
+      Count
+    </span>
+  </div>
   <div *ngIf="cartItems.length; else emptyCart">
-    <div *ngFor="let item of cartItems | orderby : 'name';">
+    <div *ngFor="let item of cartItems | orderby : sortProperty: sortAsc;">
       <app-cart-item
         [cartItem]="item"
         (removeItem)="onRemoveItem($event)"
