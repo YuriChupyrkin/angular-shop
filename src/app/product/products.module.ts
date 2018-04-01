@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from '../shared/shared.module';
 import { ProductsComponent } from './products.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductsService } from './products.service';
-import { UserFriendlyDirective } from '../core/directives/read-friendly.directive';
 
 @NgModule({
   declarations: [
     ProductsComponent,
     ProductItemComponent,
-    UserFriendlyDirective,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   providers: [
     ProductsService,
