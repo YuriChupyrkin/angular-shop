@@ -7,7 +7,7 @@
       {{ item.category | titlecase }}
     </span>
   </div>
-  <div appReadFriendly size="28" class="description">{{item.description}}</div>
+  <div class="description">{{item.description}}</div>
   <div class="buy-item">
     <div *ngIf="item.isAvailible; else notAvailible" (click)="onBuy()" class="availible">
       Buy
