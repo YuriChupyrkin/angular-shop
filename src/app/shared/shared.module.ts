@@ -2,11 +2,12 @@ import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UserFriendlyDirective } from './directives/read-friendly.directive';
-
+import { OrderByPipe } from './pipes/order-by-pipe';
 
 @NgModule({
   declarations: [
     UserFriendlyDirective,
+    OrderByPipe,
   ],
   providers: [
   ],
@@ -15,6 +16,7 @@ import { UserFriendlyDirective } from './directives/read-friendly.directive';
   ],
   exports: [
     UserFriendlyDirective,
+    OrderByPipe,
   ]
 })
 export class SharedModule { }

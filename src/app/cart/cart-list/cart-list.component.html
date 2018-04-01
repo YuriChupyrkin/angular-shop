@@ -1,6 +1,6 @@
 <div class="cart-body">
   <div *ngIf="cartItems.length; else emptyCart">
-    <div *ngFor="let item of cartItems">
+    <div *ngFor="let item of cartItems | orderby : 'name';">
       <app-cart-item
         [cartItem]="item"
         (removeItem)="onRemoveItem($event)"
