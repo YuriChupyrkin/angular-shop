@@ -1,9 +1,9 @@
 export enum Category {
-  racing = 'Racing',
+  racing = 'racing',
   fps = 'FPS',
-  strategy = 'Strategy',
-  moba = 'Moba',
-  action = 'Action',
+  strategy = 'strategy',
+  moba = 'moba',
+  action = 'action',
 }
 
 export default class Product {
